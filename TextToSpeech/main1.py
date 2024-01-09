@@ -49,32 +49,37 @@ def convert_text_to_audio(file_name):
 
 if __name__ == "__main__":
     try:
-        # Проверка наличия зависимостей
-        if not check_dependencies():
-            install_dependencies()
+        while True:
+            # Проверка наличия зависимостей
+            if not check_dependencies():
+                install_dependencies()
 
-        # Вывод баннера и другие функции
-        banner = """
-         _______        _     _______       _____                      _     
-        |__   __|      | |   |__   __|     / ____|                    | |    
-           | | _____  _| |_     | | ___   | (___  _ __   ___  ___  ___| |__  
-           | |/ _ \ \/ / __|    | |/ _ \   \___ \| '_ \ / _ \/ _ \/ __| '_ \ 
-           | |  __/>  <| |_     | | (_) |  ____) | |_) |  __/  __/ (__| | | |
-           |_|\___/_/\_\\__|     |_|\___/  |_____/| .__/ \___|\___|\___|_| |_|
-                                                     | |                         
-                                                     |_|
-        """
+            # Вывод баннера и другие функции
+            banner = """
+             _______        _     _______       _____                      _     
+            |__   __|      | |   |__   __|     / ____|                    | |    
+               | | _____  _| |_     | | ___   | (___  _ __   ___  ___  ___| |__  
+               | |/ _ \ \/ / __|    | |/ _ \   \___ \| '_ \ / _ \/ _ \/ __| '_ \ 
+               | |  __/>  <| |_     | | (_) |  ____) | |_) |  __/  __/ (__| | | |
+               |_|\___/_/\_\\__|     |_|\___/  |_____/| .__/ \___|\___|\___|_| |_|
+                                                             | |                         
+                                                             |_|
+            """
 
-        print(banner)
-        print("made by TyOpey")
-        print(f"Текущее время: {get_current_time()}")
+            print(banner)
+            print("made by TyOpey")
+            print(f"Текущее время: {get_current_time()}")
 
-        text_files = [f for f in os.listdir('Text') if f.endswith('.txt')]
-        print("Файлы в папке Text:")
-        for file_name in text_files:
-            print(file_name)
+            text_files = [f for f in os.listdir('Text') if f.endswith('.txt')]
+            print("Файлы в папке Text:")
+            for file_name in text_files:
+                print(file_name)
 
-        chosen_file = input("Введите название файла из папки Text: ")
-        convert_text_to_audio(chosen_file)
+            chosen_file = input("Введите название файла из папки Text: ")
+            convert_text_to_audio(chosen_file)
+
+            answer = input("Хотите провести ещё одну операцию? (Да/Нет): ")
+            if answer.lower() != 'да':
+                break  # Завершение цикла, если пользователь ввел что-то кроме "да"
     except Exception as e:
         print(f"Ошибка: {e}")
